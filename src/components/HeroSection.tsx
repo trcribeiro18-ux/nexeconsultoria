@@ -59,18 +59,6 @@ const HeroSection = () => {
             sustentável, profissional e escalável.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex justify-center items-center"
-          >
-            <img 
-              src={logoNexe} 
-              alt="NEXE Logo" 
-              className="w-48 md:w-64 h-auto object-contain"
-            />
-          </motion.div>
 
           {/* Stats */}
           <motion.div
