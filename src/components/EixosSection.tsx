@@ -9,9 +9,11 @@ const eixos = [
     icon: Compass,
     title: 'NEXE Consultoria',
     subtitle: 'Eixo Estratégico',
-    description: 'Diagnostica, organiza, profissionaliza e cria governança. É onde nasce a clareza, a direção e a coerência do negócio.',
-    features: ['Diagnóstico Empresarial', 'Governança Corporativa', 'Planejamento Estratégico', 'Profissionalização'],
+    description: 'Diagnostica, organiza, profissionaliza e cria governança. É onde nasce a base que sustenta todo o ecossistema NEXE.',
+    features: ['Crescimento acelerado e desorganizado', 'Dependência excessiva do fundador', 'Falta de governança e estrutura', 'Momentos críticos de transformação'],
+    featuresTitle: 'Quando a NEXE Consultoria Atua',
     color: 'from-blue-500/20 to-blue-600/5',
+    showLink: true,
   },
   {
     id: 'evolution',
@@ -22,6 +24,7 @@ const eixos = [
     features: ['Smart Living', 'Automação Residencial', 'Tecnologia Embarcada', 'HUBs Estruturados'],
     color: 'from-gold/20 to-gold/5',
     highlight: true,
+    showLink: true,
   },
   {
     id: 'negocios',
@@ -31,6 +34,7 @@ const eixos = [
     description: 'Estruturamos novos negócios, projetos estratégicos e iniciativas especiais, conectando estratégia, execução e mercado.',
     features: ['Novos Negócios', 'Projetos Estratégicos', 'Iniciativas Especiais', 'Conexão de Mercado'],
     color: 'from-emerald-500/20 to-emerald-600/5',
+    showLink: false,
   },
 ];
 
