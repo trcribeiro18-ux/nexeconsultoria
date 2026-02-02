@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Layers, Zap, Target } from 'lucide-react';
+import { Layers, Zap, Target } from 'lucide-react';
+import logoNexe from '@/assets/logo-nexe.jpeg';
 
 const HeroSection = () => {
   return (
