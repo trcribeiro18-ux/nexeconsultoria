@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Layers, Zap, Target } from 'lucide-react';
+import { Layers, Zap, Target } from 'lucide-react';
+import logoNexe from '@/assets/logo-nexe.jpeg';
 
 const HeroSection = () => {
   return (
@@ -60,18 +60,16 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex justify-center items-center"
           >
-            <Button variant="hero" size="xl">
-              Conheça o HUB
-              <ArrowRight size={18} />
-            </Button>
-            <Button variant="heroOutline" size="xl">
-              Nossos Eixos
-            </Button>
+            <img 
+              src={logoNexe} 
+              alt="NEXE Logo" 
+              className="w-48 md:w-64 h-auto object-contain"
+            />
           </motion.div>
 
           {/* Stats */}
