@@ -110,6 +110,11 @@ const EixosSection = () => {
                   {eixo.description}
                 </p>
 
+                {eixo.featuresTitle && (
+                  <p className="text-xs text-gold uppercase tracking-widest mb-2 font-medium">
+                    {eixo.featuresTitle}
+                  </p>
+                )}
                 <ul className="space-y-2 mb-6">
                   {eixo.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -119,17 +124,19 @@ const EixosSection = () => {
                   ))}
                 </ul>
 
-                <a 
-                  href={`#${eixo.id}`}
-                  className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
-                    eixo.highlight 
-                      ? 'text-gold hover:text-gold-light' 
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  Saiba mais
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </a>
+                {eixo.showLink && (
+                  <a 
+                    href={`#${eixo.id}`}
+                    className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                      eixo.highlight 
+                        ? 'text-gold hover:text-gold-light' 
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    Saiba mais
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
