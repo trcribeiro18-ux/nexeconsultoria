@@ -40,8 +40,8 @@ const Header = () => {
           >
             <img 
               src={logoNexe} 
-              alt="NEXE" 
-              className="h-12 w-auto"
+              alt="NEXE Consultoria" 
+              className="h-14 md:h-16 w-auto brightness-0 invert"
             />
           </motion.div>
 
