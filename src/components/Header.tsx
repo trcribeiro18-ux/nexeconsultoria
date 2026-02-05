@@ -41,7 +41,7 @@ const Header = () => {
             <img 
               src={logoNexe} 
               alt="NEXE" 
-              className="h-10 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert"
+              className="h-12 w-auto"
             />
           </motion.div>
 
