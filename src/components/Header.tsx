@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logoNexe from '@/assets/logo-nexe-header.jpeg';
+import logoNexe from '@/assets/logo-nexe-transparent.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
