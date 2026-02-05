@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import logoNexe from '@/assets/logo-nexe-header.jpeg';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,16 +35,14 @@ const Header = () => {
       <div className="container mx-auto px-6 py-4">
         <nav className="flex items-center justify-between">
           <motion.div 
-            className="flex items-center gap-2"
+            className="flex items-center"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="font-serif text-2xl font-bold tracking-tight">
-              <span className="text-foreground">NEXE</span>
-            </span>
-            <div className="h-6 w-px bg-gold/30" />
-            <span className="text-xs text-muted-foreground tracking-widest uppercase">
-              Hub Estratégico
-            </span>
+            <img 
+              src={logoNexe} 
+              alt="NEXE" 
+              className="h-10 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
