@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import logoNexe from '@/assets/logo-nexe-consultoria.png';
+import logoNexe from '@/assets/logo-nexe-consultoria-transparent.png';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +41,7 @@ const Header = () => {
             <img 
               src={logoNexe} 
               alt="NEXE Consultoria" 
-              className="h-20 md:h-24 lg:h-28 w-auto brightness-0 invert"
+              className="h-20 md:h-24 lg:h-28 w-auto"
             />
           </motion.div>
 
