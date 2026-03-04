@@ -1,0 +1,41 @@
+name: Build Website
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Detect build type and run build
+      run: |
+        if [ -f "vite.config.js" ]; then
+          echo "Detected Vite project"
+          npm run build
+        elif [ -d "pages" ] || [ -d "app" ]; then
+          echo "Detected Next.js project"
+          npm run build
+          npm run export || true
+        fi
+
+    - name: Upload production files (dist or out folder)
+      uses: actions/upload-artifact@v3
+      with:
+        name: site-build
+        path: |
+          dist/
+          out/
