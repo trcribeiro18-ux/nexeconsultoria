@@ -11,33 +11,83 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup Node
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: 18
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Detect build type and run build
+    - name: Show project root (debug)
       run: |
-        if [ -f "vite.config.js" ]; then
-          echo "Detected Vite project"
-          npm run build
-        elif [ -d "pages" ] || [ -d "app" ]; then
-          echo "Detected Next.js project"
-          npm run build
-          npm run export || true
-        fi
+        pwd
+        ls -la
 
-    
+    - name: Install dependencies
+      run: npm ci || npm install
+
+    - name: Print package scripts (debug)
+      run: |
+        node -e "console.log(JSON.stringify(require('./package.json').scripts,null,2))"
+
+    - name: Build (Vite / Next / Genérico)
+      shell: bash
+      run: |
+        set -e
+        echo "==== RUN BUILD START ===="
+        if [ -f "vite.config.js" ] || [ -f "vite.config.ts" ]; then
+          echo "Detected Vite"
+          npm run build
+        elif [ -d "pages" ] || [ -d "app" ] || [ -f "next.config.js" ] || [ -f "next.config.mjs" ]; then
+          echo "Detected Next.js"
+          npm run build
+          # Se existir script export, tenta exportar estático
+          if npm run | grep -q "export"; then
+            npm run export || true
+          fi
+        else
+          echo "Unknown tool; running generic build"
+          npm run build || true
+        fi
+        echo "==== RUN BUILD END ===="
+        echo "Root after build:"
+        ls -la
+        echo "Top-level dirs:"
+        find . -maxdepth 2 -type d -print
+
+    - name: Detect build output folder
+      id: detect
+      shell: bash
+      run: |
+        # candidatos comuns
+        CANDIDATES=("dist" "out" "build" ".output/public" ".vercel/output/static" "public/build" "public/dist")
+        FOUND=""
+        for d in "${CANDIDATES[@]}"; do
+          if [ -d "$d" ]; then
+            FOUND="$d"
+            break
+          fi
+        done
+        # tenta ler outDir do Vite (se existir)
+        if [ -z "$FOUND" ] && [ -f "vite.config.js" ]; then
+          OUTDIR=$(node -e "try{const c=require('./vite.config.js');const o=(c?.build?.outDir)||'';process.stdout.write(o||'');}catch(e){process.stdout.write('');}")
+          if [ -n "$OUTDIR" ] && [ -d "$OUTDIR" ]; then FOUND="$OUTDIR"; fi
+        fi
+        if [ -z "$FOUND" ]; then
+          echo "Nenhuma pasta de build padrão encontrada."
+          exit 1
+        fi
+        echo "Found build folder: $FOUND"
+        echo "out_dir=$FOUND" >> "$GITHUB_OUTPUT"
+
+    - name: List build folder (debug)
+      run: |
+        echo "Built files in: ${{ steps.detect.outputs.out_dir }}"
+        ls -la "${{ steps.detect.outputs.out_dir }}"
+
     - name: Upload production files
       uses: actions/upload-artifact@v4
       with:
         name: site-build
-        path: |
-          dist/
-          out/
+        path: ${{ steps.detect.outputs.out_dir }}/
 
