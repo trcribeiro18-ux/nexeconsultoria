@@ -131,15 +131,9 @@ const EvolutionSection = () => {
               </ul>
 
               <div className="pt-6 border-t border-border">
-                <span className="text-xs text-muted-foreground block mb-4">
+                <span className="text-xs text-muted-foreground block">
                   Ideal para: <span className="text-foreground">{hub.ideal}</span>
                 </span>
-                <Button 
-                  variant={hub.premium ? "gold" : "goldOutline"} 
-                  className="w-full"
-                >
-                  {hub.cta}
-                </Button>
               </div>
             </motion.div>
           ))}
