@@ -92,8 +92,10 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="goldOutline" size="sm" className="w-fit">
-                Fale Conosco
+              <Button variant="goldOutline" size="sm" className="w-fit" asChild>
+                <a href="https://wa.me/5511965967121?text=Olá, gostaria de saber mais sobre os serviços da NEXE." target="_blank" rel="noopener noreferrer">
+                  Fale Conosco
+                </a>
               </Button>
             </div>
           </motion.div>

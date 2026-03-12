@@ -11,7 +11,7 @@ const CTASection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [message, setMessage] = useState('');
 
-  const whatsappNumber = '5511999999999'; // Substituir pelo número real do WhatsApp Business
+  const whatsappNumber = '5511965967121';
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message || 'Olá, gostaria de saber mais sobre os serviços da NEXE.')}`;
 
   const handleSendWhatsApp = () => {
