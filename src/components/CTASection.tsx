@@ -67,8 +67,8 @@ const CTASection = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-8 justify-center items-center text-muted-foreground flex-wrap"
           >
-            <a href="mailto:negocios@nexeconsultoria.com.br" className="flex items-center gap-2 hover:text-gold transition-colors">
-              <Mail size={18} />
+            <a href="mailto:negocios@nexeconsultoria.com.br" className="flex items-center gap-2 hover:text-gold transition-colors text-sm sm:text-base break-all sm:break-normal">
+              <Mail size={18} className="shrink-0" />
               negocios@nexeconsultoria.com.br
             </a>
             <div className="flex items-center gap-2">

@@ -65,7 +65,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+            className="mt-16 sm:mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto"
           >
             {[
               { icon: Layers, label: 'Eixos Integrados', value: '3' },
